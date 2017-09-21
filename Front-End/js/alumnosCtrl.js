@@ -26,5 +26,4 @@ angular.module('mainModule')
 				});
 			}
 			getAlumnos();
-			console.log($scope.alumnos);
 		});
