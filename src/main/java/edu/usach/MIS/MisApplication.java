@@ -14,6 +14,7 @@ public class MisApplication extends SpringBootServletInitializer{
     }
     
     public static void main(String[] args) {
-            SpringApplication.run(MisApplication.class, args);
+        System.out.println("test final");
+        SpringApplication.run(MisApplication.class, args);
     }
 }
