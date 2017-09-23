@@ -35,8 +35,8 @@ public class AppIT {
     @BeforeClass
     public static void setUpClass() {
         //System.setProperty("webdriver.chrome.driver", "/home/nikonegima/Escritorio/selenium/chromedriver");
-        //ChromeDriverManager.getInstance().setup();
-        FirefoxDriverManager.getInstance().setup();
+        ChromeDriverManager.getInstance().setup();
+        //FirefoxDriverManager.getInstance().setup();
         driver = new FirefoxDriver(); 
     }
     
@@ -72,12 +72,10 @@ public class AppIT {
         //Acepto la alerta emitida al enviar los datos
         Alert alerta = driver.switchTo().alert();
         alerta.accept();
-        //Realizo la espera para que todo se procese (0.25 segundos)
-        Thread.sleep(1000);
+        //Realizo la espera para que todo se procese (1.25 segundos)
+        Thread.sleep(1250);
         //Ahora deberia revisar si hay un nuevo elemento en la tabla que muestra todos los elementos de la BD
         int entradasPost = driver.findElements(By.xpath("//table[@name='tablaDatos']/tbody/tr")).size() * 2;
-        System.err.println("Entradas pre:" + entradasPre);
-        System.out.println("Entradas post:" + entradasPost);
         //Pasamos a la verificacion
         Assert.assertTrue("Se agrego un elemento en la base de datos", 
                 entradasPost == entradasPre + 4);
