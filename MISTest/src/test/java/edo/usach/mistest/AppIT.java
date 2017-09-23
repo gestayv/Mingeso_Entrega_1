@@ -37,7 +37,7 @@ public class AppIT {
         //System.setProperty("webdriver.chrome.driver", "/home/nikonegima/Escritorio/selenium/chromedriver");
         ChromeDriverManager.getInstance().setup();
         //FirefoxDriverManager.getInstance().setup();
-        driver = new FirefoxDriver(); 
+        driver = new ChromeDriver(); 
     }
     
     @AfterClass
