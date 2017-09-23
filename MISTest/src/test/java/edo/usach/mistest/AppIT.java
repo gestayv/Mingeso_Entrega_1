@@ -21,6 +21,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+
 /**
  *
  * @author nikonegima
@@ -73,7 +74,7 @@ public class AppIT {
         Alert alerta = driver.switchTo().alert();
         alerta.accept();
         //Realizo la espera para que todo se procese (1.25 segundos)
-        Thread.sleep(1250);
+        Thread.sleep(3250);
         //Ahora deberia revisar si hay un nuevo elemento en la tabla que muestra todos los elementos de la BD
         int entradasPost = driver.findElements(By.xpath("//table[@name='tablaDatos']/tbody/tr")).size() * 2;
         //Pasamos a la verificacion
