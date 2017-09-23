@@ -28,7 +28,7 @@
 	<div ng-controller="alumnosCtrl" class="container">
 				<!-- Primera columna -->
 		<div class="col-sm-6 table-responsive">
-		<table class="table table-hover">
+		<table class="table table-hover" name="tablaDatos">
 			<thead>
 				<tr>
 					<th>Nombre</th>
@@ -87,7 +87,7 @@
 						    <label for="password">Password:</label>
 						    <input type="password" class="form-control" id="password" ng-model="form.password" required="">
 						</div>
-	    				<button type="submit" class="btn btn-default" ng-click="onSubmit()" ng-disabled="!myForm.$valid">Submit</button>
+	    				<button name="aceptar" type="submit" class="btn btn-default" ng-click="onSubmit()" ng-disabled="!myForm.$valid">Submit</button>
 				    </form>
 		        </div>
 		    </div> <!-- Fin div columna-->

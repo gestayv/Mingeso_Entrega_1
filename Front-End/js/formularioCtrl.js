@@ -13,6 +13,7 @@ angular.module('mainModule')
 			};
 			$scope.onSubmit = function(){
 				postAlumnos($scope.form, alumnosSrv);
+				$window.alert("Datos enviados!");
 				$window.location.reload();
 			};
 			

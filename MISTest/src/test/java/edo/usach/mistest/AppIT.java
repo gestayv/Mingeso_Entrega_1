@@ -1,0 +1,87 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package edo.usach.mistest;
+
+import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.FirefoxDriverManager;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+/**
+ *
+ * @author nikonegima
+ */
+public class AppIT {
+    
+    private static WebDriver driver = null;
+    
+    public AppIT() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+        //System.setProperty("webdriver.chrome.driver", "/home/nikonegima/Escritorio/selenium/chromedriver");
+        //ChromeDriverManager.getInstance().setup();
+        FirefoxDriverManager.getInstance().setup();
+        driver = new FirefoxDriver(); 
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+        driver.quit();
+    }
+
+    @Test
+    public void comprobarFlujo() throws InterruptedException {
+        driver.get("http://0.0.0.0/");
+        //Creo un WebElement para encontrar una "input" determinado (Nombre)
+        WebElement nombreElem = driver.findElement(By.id("nombre"));
+        //Le digo a este elemento que mande las teclas que necesito para el Test
+        nombreElem.sendKeys("Persona Test");
+        //Lo hago con todas los "input" del formulario
+        WebElement rutElem = driver.findElement(By.id("rut"));
+        rutElem.sendKeys("111111111");
+        WebElement emailElem = driver.findElement(By.id("email"));
+        emailElem.sendKeys("test@test.com");
+        WebElement carreraElem = driver.findElement(By.id("carrera"));
+        carreraElem.sendKeys("Carrera imaginario para el Test");
+        WebElement ingresoElem = driver.findElement(By.id("ingreso"));
+        ingresoElem.sendKeys("1900");
+        WebElement passwordElem = driver.findElement(By.id("password"));
+        passwordElem.sendKeys("test");
+        //Para probar la verificacion, debemos saber cuantos elementos hay en la tabla
+            //El colapso de la tabla *seguramente* cuenta en el largo.
+        int entradasPre = driver.findElements(By.xpath("//table[@name='tablaDatos']/tbody/tr")).size() * 2;
+        //Realizo el click del boton Submit.
+        WebElement btnSubmit = driver.findElement(By.name("aceptar"));
+        btnSubmit.click();
+        //Acepto la alerta emitida al enviar los datos
+        Alert alerta = driver.switchTo().alert();
+        alerta.accept();
+        //Realizo la espera para que todo se procese (0.25 segundos)
+        Thread.sleep(1000);
+        //Ahora deberia revisar si hay un nuevo elemento en la tabla que muestra todos los elementos de la BD
+        int entradasPost = driver.findElements(By.xpath("//table[@name='tablaDatos']/tbody/tr")).size() * 2;
+        System.err.println("Entradas pre:" + entradasPre);
+        System.out.println("Entradas post:" + entradasPost);
+        //Pasamos a la verificacion
+        Assert.assertTrue("Se agrego un elemento en la base de datos", 
+                entradasPost == entradasPre + 4);
+        
+    }
+    
+}
