@@ -31,7 +31,7 @@ public class AlumnoControllerTest extends JPAHibernateTest{
         Alumno nuevo = new Alumno();
         nuevo.setNombre("Alumno 1");
         nuevo.setPassword("pass123");
-        nuevo.setCarrera("Carrera 1");
+        nuevo.setCarrera("Carrera");
         nuevo.setEmail("mail@mail.com");
         nuevo.setIngreso(2013);
         nuevo.setRut(123456);
