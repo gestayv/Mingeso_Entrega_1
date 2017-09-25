@@ -2,19 +2,7 @@ angular.module('mainModule')
 		.controller('alumnosCtrl', function($scope, alumnosSrv){
 			$scope.alumnos = [];
 			$scope.isC = true;
-			$scope.test = [
-			{
-				nombre: "asd",
-				rut: "123",
-				ingreso: "2002"
-			},
-			{
-				nombre: "asdasd",
-				rut: "1123123",
-				ingreso: "2004"
-			}
-			];
-
+			
 			//Retorna todos los alumnos en el arreglo alumnos.
 			function getAlumnos(){
 				alumnosSrv.getAlumnos()

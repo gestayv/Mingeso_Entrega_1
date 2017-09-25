@@ -13,20 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class AlumnoControllerTest extends JPAHibernateTest{
 
     @Test
-    public void testGetAllAlumnos() {
-        List<Alumno> alumnos = em.createQuery("from Alumno").getResultList();
-        assertNull(alumnos);
-    }
-
-    @Test
-    public void testGetAlumno() {
-        Integer test = 1;
-        Alumno alumno = em.find(Alumno.class, test.longValue());
-        assertNotNull(alumno);
-    }
-    
-    @Test
     public void testCreateAlumno() {
+        em.getTransaction().begin();
         Alumno nuevo = new Alumno();
         nuevo.setNombre("Alumno 1");
         nuevo.setPassword("pass123");
@@ -35,11 +23,25 @@ public class AlumnoControllerTest extends JPAHibernateTest{
         nuevo.setIngreso(2013);
         nuevo.setRut(123456);
         em.persist(nuevo);
+        em.getTransaction().commit();
 
-        Integer test = 4;
-        Alumno alumno = em.find(Alumno.class, test.longValue());
-        System.out.println(alumno);
-        assertNotNull(alumno);
+        List<Alumno> alumnos = em.createQuery("from Alumno").getResultList();
+        System.out.println("==========="+alumnos.size()+"===========");
+        System.out.println(alumnos.get(alumnos.size()-1).getNombre());
+        assertNotNull(alumnos);
     }
     
+    @Test
+    public void testGetAllAlumnos() {
+        List<Alumno> alumnos = em.createQuery("from Alumno").getResultList();
+        assertNotNull(alumnos);
+    }
+
+    @Test
+    public void testGetAlumno() {
+        Integer test = 1;
+        Alumno alumno = em.find(Alumno.class, test.longValue());
+        assertNotNull(alumno);
+    }
+        
 }

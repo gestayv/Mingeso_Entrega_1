@@ -33,6 +33,7 @@ public class JPAHibernateTest {
     public static void init() throws FileNotFoundException, SQLException {
         emf = Persistence.createEntityManagerFactory("mnf-pu-test");
         em = emf.createEntityManager();
+        
     }
     
     //  Luego del método init, pero antes de empezar los test, se inicializa

@@ -12,6 +12,7 @@ angular.module('mainModule')
 				});
 			};
 			$scope.onSubmit = function(){
+                                console.log($scope.form)
 				postAlumnos($scope.form, alumnosSrv);
 				$window.alert("Datos enviados!");
 				$window.location.reload();
