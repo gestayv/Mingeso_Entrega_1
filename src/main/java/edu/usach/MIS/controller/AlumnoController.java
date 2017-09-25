@@ -5,26 +5,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import edu.usach.MIS.model.Alumno;
-import edu.usach.MIS.repository.AlumnoRepository;
+import edu.usach.MIS.model.AlumnoDao;
 
 
 @RestController
 @RequestMapping(path="/alumno")
 public class AlumnoController {
+    
     @Autowired
-    private AlumnoRepository alumnoRepository;
+    private AlumnoDao alumnoDao;
+    
     
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Alumno> getAllAlumnos()
     {
-        return alumnoRepository.findAll();
+        return alumnoDao.getAll();
     }
     
     @GetMapping(path="/{id}")
     public @ResponseBody Alumno getAlumno(@PathVariable("id") Integer id)
     {
         long lid = id.longValue();
-        return alumnoRepository.findOne(lid);
+        return alumnoDao.getById(lid);
     }
     
     @RequestMapping(path="/new", method= RequestMethod.POST)
@@ -37,7 +39,7 @@ public class AlumnoController {
         nuevo.setEmail(alumno.getEmail());
         nuevo.setIngreso(alumno.getIngreso());
         nuevo.setRut(alumno.getRut());
-        alumnoRepository.save(nuevo);
+        alumnoDao.create(nuevo);
         return 1;
     }
 }

@@ -14,7 +14,7 @@ public class AlumnoControllerTest extends JPAHibernateTest{
 
     @Test
     public void testGetAllAlumnos() {
-        List<Alumno> alumnos = em.createNativeQuery("Select nombre from alumno").getResultList();
+        List<Alumno> alumnos = em.createQuery("from Alumno").getResultList();
         assertNotNull(alumnos);
     }
 
@@ -27,7 +27,6 @@ public class AlumnoControllerTest extends JPAHibernateTest{
     
     @Test
     public void testCreateAlumno() {
-        em.getTransaction().begin();
         Alumno nuevo = new Alumno();
         nuevo.setNombre("Alumno 1");
         nuevo.setPassword("pass123");
@@ -36,7 +35,6 @@ public class AlumnoControllerTest extends JPAHibernateTest{
         nuevo.setIngreso(2013);
         nuevo.setRut(123456);
         em.persist(nuevo);
-        em.getTransaction().commit();
 
         Integer test = 4;
         Alumno alumno = em.find(Alumno.class, test.longValue());
