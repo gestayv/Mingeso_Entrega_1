@@ -16,10 +16,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
 
 public class AppIT {
     
@@ -29,14 +25,11 @@ public class AppIT {
     }
     
     @BeforeClass
-    public static void setUpClass() throws MalformedURLException {
+    public static void setUpClass() {
         //System.setProperty("webdriver.chrome.driver", "/home/nikonegima/Escritorio/selenium/chromedriver");
         ChromeDriverManager.getInstance().setup();
         //FirefoxDriverManager.getInstance().setup();
-        driver = new ChromeDriver(); 
-        DesiredCapabilities capability = DesiredCapabilities.chrome();
-        capability.setCapability("jenkins.nodeName","(master)");
-        driver = new RemoteWebDriver(new URL("http://10.42.219.14:4444/wd/hub"), capability);
+        driver = new ChromeDriver();
     }
     
     @AfterClass

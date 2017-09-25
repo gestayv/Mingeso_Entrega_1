@@ -15,7 +15,7 @@ public class AlumnoControllerTest extends JPAHibernateTest{
     @Test
     public void testGetAllAlumnos() {
         List<Alumno> alumnos = em.createQuery("from Alumno").getResultList();
-        assertNotNull(alumnos);
+        assertNull(alumnos);
     }
 
     @Test
