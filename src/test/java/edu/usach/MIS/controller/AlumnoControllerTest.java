@@ -21,7 +21,7 @@ public class AlumnoControllerTest extends JPAHibernateTest{
         nuevo.setCarrera("Carrera");
         nuevo.setEmail("mail@mail.com");
         nuevo.setIngreso(2013);
-        nuevo.setRut(123456);
+        nuevo.setRut("123456");
         em.persist(nuevo);
         em.getTransaction().commit();
 

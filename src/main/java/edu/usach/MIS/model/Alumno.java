@@ -14,7 +14,7 @@ public class Alumno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private Integer rut;
+    private String rut;
     
     private String password;
     
@@ -34,11 +34,11 @@ public class Alumno {
         this.id = id;
     }
 
-    public Integer getRut() {
+    public String getRut() {
         return rut;
     }
 
-    public void setRut(Integer rut) {
+    public void setRut(String rut) {
         this.rut = rut;
     }
 
