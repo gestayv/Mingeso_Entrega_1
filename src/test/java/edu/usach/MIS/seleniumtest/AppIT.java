@@ -2,8 +2,6 @@ package edu.usach.MIS.seleniumtest;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
-import java.net.MalformedURLException;
-import java.net.URL;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
